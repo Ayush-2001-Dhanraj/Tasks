@@ -1,9 +1,83 @@
 .sidebar {
     width: 225px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logoContainer {
+    padding: 10px 25px;
+    font-size: 25px;
+}
+
+.accordionBtn {
+    cursor: pointer;
+    padding: 10px 25px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.accordionNonActive {
+    display: none;
+}
+
+.accordionActive {
+    display: block;
+}
+
+.sidetab {
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+}
+
+.sideTabSelected {
+    background-color: #000;
+    color: #fff
+}
+
+.sideTabIcon {
+    margin-right: 5px;
+    color: inherit;
+}
+
+.addProjectContainer {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.addProject {
+    cursor: pointer;
+    padding: 10px 0;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #000 dashed 1px;
+}
+
+.actions {
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
     .sidebar {
         width: auto;
+
     }
 }
