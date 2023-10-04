@@ -1,0 +1,10 @@
+.sidetab {
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+}
+
+.sideTabSelected {
+    background-color: #000;
+    color: #fff
+}

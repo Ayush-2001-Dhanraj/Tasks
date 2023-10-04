@@ -3,26 +3,22 @@ import {
   MdOutlineDashboardCustomize,
   MdOutlineAnalytics,
 } from "react-icons/md";
-import { AiOutlineCalendar, AiOutlinePlus } from "react-icons/ai";
-import { RiTaskLine } from "react-icons/ri";
 import {
-  BiSolidUpArrow,
-  BiSolidDownArrow,
-  BiHelpCircle,
-  BiLogOut,
-} from "react-icons/bi";
+  AiOutlineCalendar,
+  AiOutlinePlus,
+  AiFillLeftCircle,
+  AiFillRightCircle,
+} from "react-icons/ai";
+import { RiTaskLine } from "react-icons/ri";
+import { BiHelpCircle, BiLogOut } from "react-icons/bi";
 import { SiTask } from "react-icons/si";
+import Accordion from "../accordion";
+import {
+  SideBarAccordionsData,
+  SideTabDataInterface,
+} from "../../utility/common";
+import SideTab from "../SideTab";
 import { useState } from "react";
-
-interface SideTabDataInterface {
-  icon: JSX.Element;
-  label: string;
-}
-
-interface SideTabInterface {
-  data: SideTabDataInterface;
-  selected?: boolean;
-}
 
 const sideTabsData: Array<SideTabDataInterface> = [
   {
@@ -48,82 +44,71 @@ const actionData: Array<SideTabDataInterface> = [
   { icon: <BiLogOut className={styles.sideTabIcon} />, label: "Logout" },
 ];
 
-const SideTabs = ({ data, selected }: SideTabInterface) => {
-  return (
-    <div
-      className={`${styles.sidetab} ${selected ? styles.sideTabSelected : ""} `}
-    >
-      {data.icon}
-      {data.label}
-    </div>
-  );
-};
+export default function Sidebar() {
+  const [openSidebar, setOpenSidebar] = useState<boolean>(false);
 
-interface AccordianInterface {
-  isActive?: boolean;
-  header: string;
-  accordianContent?: JSX.Element;
-}
-
-const Accordion = ({
-  isActive: defaultActive,
-  header,
-  accordianContent = <></>,
-}: AccordianInterface) => {
-  const [isActive, setIsActive] = useState<boolean>(defaultActive || true);
-
-  const handleAccordionClick = () => setIsActive((preV) => !preV);
-
-  return (
+  const homeAccordionContent: JSX.Element = (
     <>
-      <button className={styles.accordionBtn} onClick={handleAccordionClick}>
-        {header} {isActive ? <BiSolidDownArrow /> : <BiSolidUpArrow />}
-      </button>
-      <div
-        className={`${
-          isActive ? styles.accordionActive : styles.accordionNonActive
-        }`}
-      >
-        {accordianContent}
+      {sideTabsData.map((tab: SideTabDataInterface) => {
+        return <SideTab data={tab} />;
+      })}
+    </>
+  );
+
+  const projectAccordionContent: JSX.Element = (
+    <>
+      <div className={styles.addProjectContainer}>
+        <button className={styles.addProject}>
+          <AiOutlinePlus className={styles.sideTabIcon} />
+          Add Project
+        </button>
       </div>
     </>
   );
-};
 
-export default function Sidebar() {
+  const teamsAccordionData: JSX.Element = <></>;
+
+  const sideBarAccordions: Array<SideBarAccordionsData> = [
+    {
+      header: "Home",
+      content: homeAccordionContent,
+    },
+    {
+      header: "Projects",
+      content: projectAccordionContent,
+    },
+    {
+      header: "Teams",
+      content: teamsAccordionData,
+    },
+  ];
+
+  const handleToggle = () => setOpenSidebar((preV) => !preV);
+
   return (
-    <div className={styles.sidebar}>
+    <div
+      className={`${styles.sidebar} ${openSidebar ? styles.openSideBar : ""}`}
+    >
       <div className={styles.logoContainer}>
-        <SiTask size={30} /> Tasks
+        <SiTask size={30} />
+        <p className={styles.brandName}>Tasks</p>
       </div>
-      <Accordion
-        header="Home"
-        accordianContent={
-          <>
-            {sideTabsData.map((tab: SideTabDataInterface) => {
-              return <SideTabs data={tab} />;
-            })}
-          </>
-        }
-      />
-      <Accordion
-        header="Projects"
-        accordianContent={
-          <>
-            <div className={styles.addProjectContainer}>
-              <button className={styles.addProject}>
-                <AiOutlinePlus className={styles.sideTabIcon} />
-                Add Project
-              </button>
-            </div>
-          </>
-        }
-      />
-      <Accordion header="Teams" />
+      <div>
+        {sideBarAccordions.map((data) => (
+          <Accordion header={data.header} accordianContent={data.content} />
+        ))}
+      </div>
       <div className={styles.actions}>
         {actionData.map((tab: SideTabDataInterface) => {
-          return <SideTabs data={tab} />;
+          return <SideTab data={tab} />;
         })}
+      </div>
+      <div className={styles.closeSidebar} onClick={handleToggle}>
+        {openSidebar ? (
+          <AiFillLeftCircle size={25} />
+        ) : (
+          <AiFillRightCircle size={25} />
+        )}
       </div>
     </div>
   );

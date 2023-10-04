@@ -1,51 +1,51 @@
 .sidebar {
     width: 225px;
     height: 100vh;
-    overflow-y: auto;
     background-color: #fff;
     color: #000;
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: 2s;
+
+    @media screen and (max-width: 768px) {
+        position: absolute;
+        left: -225px;
+        z-index: 9999;
+    }
 }
+
+.closeSidebar {
+    @media screen and (min-width: 768px) {
+        display: none;
+    }
+
+    position: absolute;
+    left: 200px;
+    top: calc(100vh - 55%);
+    z-index: 9999;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+}
+
+.openSideBar {
+    left: 0;
+}
+
 
 .logoContainer {
     padding: 10px 25px;
     font-size: 25px;
-}
 
-.accordionBtn {
-    cursor: pointer;
-    padding: 10px 25px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    background-color: #fff;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: medium;
-    font-weight: bolder;
-}
+    align-items: last baseline;
 
-.accordionNonActive {
-    display: none;
-}
-
-.accordionActive {
-    display: block;
-}
-
-.sidetab {
-    display: flex;
-    align-items: center;
-    padding: 10px 25px;
-}
-
-.sideTabSelected {
-    background-color: #000;
-    color: #fff
+    .brandName {
+        margin-left: 5px;
+    }
 }
 
 .sideTabIcon {
@@ -73,11 +73,4 @@
 
 .actions {
     margin-top: auto;
-}
-
-@media (max-width: 768px) {
-    .sidebar {
-        width: auto;
-
-    }
 }

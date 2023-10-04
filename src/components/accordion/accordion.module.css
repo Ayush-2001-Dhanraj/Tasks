@@ -1,0 +1,22 @@
+.accordionBtn {
+    cursor: pointer;
+    padding: 10px 25px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.accordionNonActive {
+    display: none;
+}
+
+.accordionActive {
+    display: block;
+}
