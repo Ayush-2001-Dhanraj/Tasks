@@ -1,0 +1,21 @@
+.searchInput {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px 25px 10px 35px;
+    border-radius: 10px;
+    width: 500px;
+    background: transparent no-repeat 10px center;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.onBlack {
+    border: 1px solid rgba(255, 255, 255, 1);
+    color: #fff
+}
+
+.fullWidth {
+    width: 100%;
+}

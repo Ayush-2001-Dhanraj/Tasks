@@ -130,7 +130,13 @@ export default function Sidebar() {
       </div>
       <div className={styles.actions}>
         {actionData.map((tab: SideTabDataInterface) => {
-          return <SideTab data={tab} />;
+          return (
+            <SideTab
+              data={tab}
+              onSideTabClick={() => handleSideTabClick(tab.to)}
+              selected={pathname === tab.to}
+            />
+          );
         })}
       </div>
       <div className={styles.closeSidebar} onClick={handleToggle}>

@@ -1,0 +1,50 @@
+.FAQ {
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 10px 10px 0 0;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    background-image: url("../../utility/images/helpBanner.jpg");
+    background-position: center;
+    background-size: cover;
+
+    color: #fff;
+
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+        padding: 0 10px;
+    }
+
+}
+
+.searchContainer {
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.FAQ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    /* Adjust the opacity as needed */
+    pointer-events: none;
+    /* Prevents the overlay from blocking interactions */
+    z-index: 1;
+    /* Places the overlay behind the content */
+    border-radius: inherit;
+    /* Match the parent's border radius */
+}

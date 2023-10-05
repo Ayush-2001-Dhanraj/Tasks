@@ -8,6 +8,7 @@ import Teams from "../../pages/teams";
 import Layout from "../layout";
 import Login from "../../pages/login";
 import NotFound from "../../components/notFound";
+import FAQ from "../../pages/faq";
 
 export function RequireAuth({ children }: { children: JSX.Element }) {
   let auth = true;
@@ -53,6 +54,10 @@ export const AppRoutes = () =>
         {
           path: "/teams",
           element: <Teams />,
+        },
+        {
+          path: "/help",
+          element: <FAQ />,
         },
       ],
     },

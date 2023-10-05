@@ -1,16 +1,17 @@
 import { useRef, useState } from "react";
-import getURIFromIcon from "../../utility/getURIFromIcon";
 import styles from "./styles.module.css";
 import {
-  AiOutlineSearch,
   AiOutlineCalendar,
   AiOutlineDown,
   AiOutlineMail,
 } from "react-icons/ai";
+import SearchBar from "../searchBar";
+import { useLocation } from "react-router-dom";
 
 export default function Topbar() {
   const interviewDateRef = useRef();
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const { pathname } = useLocation();
 
   const handleInterviewDateClick = () => {
     // @ts-ignore
@@ -29,12 +30,9 @@ export default function Topbar() {
         <p>Lets Organize Your Daily Tasks.</p>
       </div>
 
-      <input
-        type="search"
-        className={styles.searchInput}
-        placeholder="Search task, project or team members"
-        style={{ backgroundImage: getURIFromIcon(<AiOutlineSearch />) }}
-      />
+      {pathname !== "/help" && (
+        <SearchBar placeholder="Search task, project or team members" />
+      )}
 
       <div className={styles.rightSection}>
         <div
