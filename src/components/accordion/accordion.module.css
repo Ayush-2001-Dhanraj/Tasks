@@ -1,6 +1,6 @@
 .accordionBtn {
     cursor: pointer;
-    padding: 10px 25px;
+    padding: 10px 0;
     width: 100%;
     text-align: left;
     border: none;
@@ -9,7 +9,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: medium;
+}
+
+.accordionBtnHeader {
+    font-size: 18px;
+    padding: 10px 25px;
     font-weight: bolder;
 }
 

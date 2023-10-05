@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styles from "./accordion.module.css";
 import { BiSolidUpArrow, BiSolidDownArrow } from "react-icons/bi";
-import { AccordianInterface } from "../../utility/common";
+import { AccordianInterface, AccordionStyles } from "../../utility/common";
 
 const Accordion = ({
   isActive: defaultActive,
   header,
+  design = AccordionStyles.PRIMARY,
   accordianContent = <></>,
 }: AccordianInterface) => {
   const [isActive, setIsActive] = useState<boolean>(defaultActive || true);
@@ -14,8 +15,20 @@ const Accordion = ({
 
   return (
     <>
-      <button className={styles.accordionBtn} onClick={handleAccordionClick}>
-        {header} {isActive ? <BiSolidDownArrow /> : <BiSolidUpArrow />}
+      <button
+        className={`${styles.accordionBtn} ${
+          design === AccordionStyles.HEADER ? styles.accordionBtnHeader : ""
+        }`}
+        onClick={handleAccordionClick}
+      >
+        {header}
+        {isActive ? (
+          <BiSolidDownArrow
+            size={design === AccordionStyles.PRIMARY ? 10 : 15}
+          />
+        ) : (
+          <BiSolidUpArrow size={design === AccordionStyles.PRIMARY ? 10 : 15} />
+        )}
       </button>
       <div
         className={`${
@@ -24,6 +37,7 @@ const Accordion = ({
       >
         {accordianContent}
       </div>
+      <hr />
     </>
   );
 };
