@@ -1,3 +1,21 @@
+.container {
+    height: 100%;
+    overflow: scroll;
+    padding-bottom: 25px;
+}
+
+.ideaImage {
+    position: absolute;
+    bottom: 0;
+    right: -80px;
+    background-image: url("../../utility/images/bulb.png");
+    height: 400px;
+    width: 200px;
+    z-index: 999;
+    background-position: center;
+    background-size: cover;
+}
+
 .FAQ {
     height: 200px;
     border: 1px solid black;
@@ -29,6 +47,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    & p {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
 }
 
 
@@ -47,4 +70,16 @@
     /* Places the overlay behind the content */
     border-radius: inherit;
     /* Match the parent's border radius */
+}
+
+.commonQuestion {
+    padding: 25px 25px;
+    flex: 1;
+
+    border: 2px solid #000;
+
+    & p {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
 }
