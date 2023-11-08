@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    transition: 2s;
+    transition: 250ms ease-in;
 
     @media screen and (max-width: 768px) {
         position: absolute;
